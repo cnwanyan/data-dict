@@ -72,7 +72,7 @@ public class CreaterService {
 		}
 		String path="d:"+File.separator + dbName + ".docx";
 		xsg_data.saveDocument(xdoc, path);
-		System.out.println("文件生成成功,路径为"+path);
+		System.out.println("数据字典生成成功,路径为"+path);
 	}
 	
 	private void createTable(XWPFDocument xdoc,DictTable dictTable) {
