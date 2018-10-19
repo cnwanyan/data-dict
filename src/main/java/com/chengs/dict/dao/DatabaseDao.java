@@ -20,7 +20,7 @@ public class DatabaseDao {
 	private Connection conn;
 
 	public List<String> getAllTable(String dbName) throws SQLException{
-		String sql="select table_name from information_schema.tables where table_schema='?' and table_type='base table'";
+		String sql="select table_name from information_schema.tables where table_schema=? and table_type='base table'";
 		PreparedStatement sta = conn.prepareStatement(sql);
 		sta.setString(1, dbName);
 		ResultSet rs = sta.executeQuery();
@@ -45,8 +45,8 @@ public class DatabaseDao {
 				"	EXTRA as extra\r\n" + 
 				"from information_schema. COLUMNS\r\n" + 
 				"WHERE\r\n" + 
-				"	TABLE_SCHEMA = '?' \r\n" + 
-				"  and TABLE_NAME = '?' ";
+				"	TABLE_SCHEMA = ? \r\n" + 
+				"  and TABLE_NAME = ? ";
 		List<DictTable> ret=new ArrayList<>();
 		PreparedStatement sta = conn.prepareStatement(sql);
 		sta.setString(1, dbName);
