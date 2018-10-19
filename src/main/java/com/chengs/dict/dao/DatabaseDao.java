@@ -28,7 +28,6 @@ public class DatabaseDao {
 		while (rs.next()) {
 			String table=rs.getString("table_name");
 			result.add(table);
-            System.out.println(table);
         }
 		rs.close();
 		return result;
