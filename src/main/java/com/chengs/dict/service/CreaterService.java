@@ -59,7 +59,7 @@ public class CreaterService {
 	private static String[] FILEDS = new String[]{"字段名","字段类型","主键/外键","默认值","描述"};
 	private static int[] COLUMN_WIDTHS = new int[] {1504,1504,1504,1504,1504};
 	
-	public void creater(String url,String user,String password,String dbName)throws Exception {
+	public String creater(String url,String user,String password,String dbName)throws Exception {
 		Connection conn=DBUtil.getConnection(url, user, password);
 		DatabaseDao databaseDao=new DatabaseDao(conn);
 		List<String> tableList=databaseDao.getAllTable(dbName);
@@ -72,7 +72,8 @@ public class CreaterService {
 		}
 		String path="d:"+File.separator + dbName + ".docx";
 		xsg_data.saveDocument(xdoc, path);
-		System.out.println(path);
+		conn.close();
+		return path;
 	}
 	
 	private void createTable(XWPFDocument xdoc,DictTable dictTable) {
